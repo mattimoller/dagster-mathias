@@ -1,15 +1,16 @@
 import requests
+from dagster import asset
+
+from utils import env
+from utils.slack import send_slack_message
 
 
 def get_bib_status() -> dict:
     # Define the URL of the GraphQL API
     url = "https://atleta.cc/api/graphql"
 
-    # Define the headers, typically including content-type and possibly authorization tokens
     headers = {
         "Content-Type": "application/json",
-        # Uncomment and replace 'YourAuthToken' with your actual token if authorization is needed
-        # "Authorization": "Bearer YourAuthToken"
     }
 
     # Define the GraphQL query payload
@@ -99,5 +100,14 @@ def check_num_bibs_available(data: dict) -> int:
     return data["data"]["event"]["registrations_for_sale_count"]
 
 
-if __name__ == "__main__":
-    get_bib_status()
+@asset()
+def bib_reporter() -> None:
+    data = get_bib_status()
+    num_bibs_available = check_num_bibs_available(data)
+
+    if num_bibs_available == 0:
+        print("There are no bibs available")
+        return
+    text = f"There are {num_bibs_available} bibs available! :athletic_shoe: <https://www.tcsamsterdammarathon.eu/bib-number-supply-demand|Webpage>"
+    payload = {"text": text}
+    send_slack_message(payload, env.slack_webhook_url)

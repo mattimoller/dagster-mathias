@@ -1,6 +1,6 @@
 import pytest
 
-from dagster_mathias.assets import check_num_bibs_available
+from dagster_mathias.assets.amsterdam_marathon import check_num_bibs_available
 
 
 @pytest.mark.parametrize(
