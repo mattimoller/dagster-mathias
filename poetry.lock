@@ -328,10 +328,7 @@ grpcio = ">=1.44.0"
 grpcio-health-checking = ">=1.44.0"
 Jinja2 = "*"
 packaging = ">=20.9"
-pendulum = [
-    {version = ">=0.7.0,<4", markers = "python_version >= \"3.9\" and python_version < \"3.12\""},
-    {version = ">=3,<4", markers = "python_version >= \"3.12\""},
-]
+pendulum = {version = ">=0.7.0,<4", markers = "python_version >= \"3.9\" and python_version < \"3.12\""}
 protobuf = {version = ">=4,<5", markers = "python_version >= \"3.11\""}
 psutil = {version = ">=1.0", markers = "platform_system == \"Windows\""}
 pydantic = ">1.10.0,<1.10.7 || >1.10.7,<3"
@@ -350,10 +347,7 @@ tomli = "<3"
 toposort = ">=1.0"
 tqdm = "<5"
 typing-extensions = ">=4.4.0,<5"
-universal-pathlib = [
-    {version = "*", markers = "python_version < \"3.12\""},
-    {version = ">=0.2.0", markers = "python_version >= \"3.12\""},
-]
+universal-pathlib = {version = "*", markers = "python_version < \"3.12\""}
 watchdog = ">=0.8.3"
 
 [package.extras]
@@ -1815,6 +1809,20 @@ slack = ["slack-sdk"]
 telegram = ["requests"]
 
 [[package]]
+name = "types-requests"
+version = "2.31.0.20240406"
+description = "Typing stubs for requests"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "types-requests-2.31.0.20240406.tar.gz", hash = "sha256:4428df33c5503945c74b3f42e82b181e86ec7b724620419a2966e2de604ce1a1"},
+    {file = "types_requests-2.31.0.20240406-py3-none-any.whl", hash = "sha256:6216cdac377c6b9a040ac1c0404f7284bd13199c0e1bb235f4324627e8898cf5"},
+]
+
+[package.dependencies]
+urllib3 = ">=2"
+
+[[package]]
 name = "types-setuptools"
 version = "69.5.0.20240423"
 description = "Typing stubs for setuptools"
@@ -2265,5 +2273,5 @@ multidict = ">=4.0"
 
 [metadata]
 lock-version = "2.0"
-python-versions = ">=3.11,<3.13"
-content-hash = "a20706446712333f6bb6317766f23e4aa4fd76df936741606dc0887b6e913748"
+python-versions = "3.11.6"
+content-hash = "65932edffc17ddf15eb81133412978e4658b9183ad7671806c3156ce72cc542a"
