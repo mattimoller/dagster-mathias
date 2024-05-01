@@ -1,4 +1,4 @@
-from dagster import ScheduleDefinition, job
+from dagster import DefaultScheduleStatus, ScheduleDefinition, job
 
 from .assets.amsterdam_marathon import bib_reporter
 
@@ -9,5 +9,7 @@ def check_bib_availability():
 
 
 bib_schedule = ScheduleDefinition(
-    job=check_bib_availability, cron_schedule="*/10 * * * *"
+    job=check_bib_availability,
+    cron_schedule="*/10 * * * *",
+    default_status=DefaultScheduleStatus.RUNNING,
 )
