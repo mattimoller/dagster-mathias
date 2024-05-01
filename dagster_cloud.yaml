@@ -1,0 +1,4 @@
+locations:
+- code_source:
+    package_name: dagster_mathias
+  location_name: dagster-mathias
