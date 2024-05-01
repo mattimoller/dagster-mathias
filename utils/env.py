@@ -1,3 +1,6 @@
 import os
+from typing import Any
 
-slack_webhook_url = os.environ["SLACK_WEBHOOK_URL"]
+
+def get_env_var(var_name: str) -> Any:
+    return os.environ[var_name]

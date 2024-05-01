@@ -110,4 +110,5 @@ def bib_reporter() -> None:
         return
     text = f"There are {num_bibs_available} bibs available! :athletic_shoe: <https://www.tcsamsterdammarathon.eu/bib-number-supply-demand|Webpage>"
     payload = {"text": text}
-    send_slack_message(payload, env.slack_webhook_url)
+
+    send_slack_message(payload, env.get_env_var("SLACK_WEBHOOK_URL"))
