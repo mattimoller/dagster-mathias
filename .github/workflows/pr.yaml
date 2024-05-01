@@ -49,7 +49,7 @@ jobs:
       - poetry-run
     if: failure() || cancelled()
     outputs:
-      result: ${{ steps.check.output.result }}
+      result: ${{ steps.result.outputs.result }}
     steps:
       - id: result
         run: echo "result=failed" >> "$GITHUB_OUTPUT"
