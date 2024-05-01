@@ -16,6 +16,8 @@ setuptools = "^69.5.1"
 ruff = "^0.4.2"
 mypy = "^1.10.0"
 types-setuptools = "^69.5.0.20240423"
+coverage = "^7.5.0"
+pytest = "^8.2.0"
 
 [build-system]
 requires = ["setuptools"]
