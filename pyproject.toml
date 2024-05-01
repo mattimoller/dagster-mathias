@@ -10,6 +10,7 @@ python = "3.11.6"
 dagster = "^1.7.3"
 dagster-webserver = "^1.7.3"
 setuptools = "^69.5.1"
+requests = "^2.31.0"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -18,6 +19,7 @@ mypy = "^1.10.0"
 types-setuptools = "^69.5.0.20240423"
 coverage = "^7.5.0"
 pytest = "^8.2.0"
+types-requests = "^2.31.0.20240406"
 
 [build-system]
 requires = ["setuptools"]
