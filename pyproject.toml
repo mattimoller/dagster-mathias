@@ -6,7 +6,7 @@ authors = ["mattimoller <mathias@strise.ai>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.11,<3.13"
+python = "3.11.6"
 dagster = "^1.7.3"
 dagster-webserver = "^1.7.3"
 setuptools = "^69.5.1"
@@ -16,6 +16,8 @@ setuptools = "^69.5.1"
 ruff = "^0.4.2"
 mypy = "^1.10.0"
 types-setuptools = "^69.5.0.20240423"
+coverage = "^7.5.0"
+pytest = "^8.2.0"
 
 [build-system]
 requires = ["setuptools"]
@@ -24,3 +26,34 @@ build-backend = "setuptools.build_meta"
 
 [tool.dagster]
 module_name = "dagster_mathias"
+
+[tool.coverage.run]
+branch = true
+relative_files = true
+
+[tool.coverage.report]
+# Regexes for lines to exclude from consideration
+exclude_also = [
+    # Don't complain about missing debug-only code:
+    "def __repr__",
+    "if self\\.debug",
+
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+
+    # Don't complain if non-runnable code isn't run:
+    "if 0:",
+    "if __name__ == .__main__.:",
+
+    # Don't complain about abstract methods, they aren't run:
+    "@(abc\\.)?abstractmethod",
+]
+
+ignore_errors = true
+
+[tool.coverage.html]
+directory = ".coverage_reports/html"
+
+[tool.coverage.xml]
+output = ".coverage_reports/xml/coverage.xml"
