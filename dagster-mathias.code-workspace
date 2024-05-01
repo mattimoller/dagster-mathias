@@ -1,0 +1,33 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"python.envFile": "${workspaceFolder}/.env",
+		"editor.formatOnSave": true,
+		"[python]": {
+			"editor.formatOnSave": true,
+			"editor.defaultFormatter": "charliermarsh.ruff",
+			"editor.codeActionsOnSave": {
+				"source.organizeImports.ruff": "explicit"
+			}
+		},
+		"mypy.enabled": true,
+		"mypy.dmypyExecutable": "dmypy",
+		"files.exclude": {
+			"**/.mypy_cache": true,
+			"**/.pytest_cache": true,
+			"**/.ruff_cache": true,
+			"**/__pycache__": true,
+		}
+	},
+	"extensions": {
+		"recommendations": [
+			"charliermarsh.ruff",
+			"ms-python.python",
+			"matangover.mypy"
+		]
+	}
+}
