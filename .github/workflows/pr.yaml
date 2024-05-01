@@ -61,12 +61,10 @@ jobs:
   pr-result:
     name: Result
     runs-on: ubuntu-latest
-    needs:
-      - check-failed
-    if: always()
+    needs: check-failed
     steps:
       - run: |
-          if test -n "${{ needs.check-failed.output.result }}"; then
+          if test -n "${{ needs.check-failed.outputs.result }}"; then
             exit 1
           fi
 
