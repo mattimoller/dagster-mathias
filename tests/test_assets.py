@@ -11,6 +11,7 @@ from dagster_mathias.assets.amsterdam_marathon import check_num_bibs_available
                 "data": {
                     "event": {
                         "registrations_for_sale_count": 0,
+                        "filtered_registrations_for_sale_count": 0,
                     }
                 }
             },
@@ -21,6 +22,7 @@ from dagster_mathias.assets.amsterdam_marathon import check_num_bibs_available
                 "data": {
                     "event": {
                         "registrations_for_sale_count": 5,
+                        "filtered_registrations_for_sale_count": 5,
                     }
                 }
             },
@@ -31,6 +33,7 @@ from dagster_mathias.assets.amsterdam_marathon import check_num_bibs_available
                 "not_data": {
                     "not_event": {
                         "registrations_for_sale_count": 5,
+                        "filtered_registrations_for_sale_count": 5,
                     }
                 }
             },
@@ -41,7 +44,8 @@ from dagster_mathias.assets.amsterdam_marathon import check_num_bibs_available
 def test_amsterdam_bibs_available(input, expected):
     if isinstance(expected, int):
         # Use the expected context manager to check for exceptions
-        assert check_num_bibs_available(input) == expected
+        num_available, _ = check_num_bibs_available(input)
+        assert num_available == expected
     else:
         # Use the expected context manager to check for exceptions
         with expected:
