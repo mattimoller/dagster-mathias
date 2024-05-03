@@ -2,7 +2,13 @@ name: Serverless Branch Deployments
 on:
   pull_request:
     types: [opened, synchronize, reopened, closed]
-    
+  
+
+permissions:
+  contents: write
+  id-token: write
+  pull-requests: write
+
 concurrency:
   # Cancel in-progress deploys to same branch
   group: ${{ github.ref }}/branch_deployments
@@ -11,7 +17,7 @@ env:
   DAGSTER_CLOUD_URL: "http://mathias.dagster.cloud"
   DAGSTER_CLOUD_API_TOKEN: ${{ secrets.DAGSTER_CLOUD_API_TOKEN }}
   ENABLE_FAST_DEPLOYS: 'true'
-  PYTHON_VERSION: '3.8'
+  PYTHON_VERSION: '3.11'
   DAGSTER_CLOUD_FILE: 'dagster_cloud.yaml'
 
 jobs:

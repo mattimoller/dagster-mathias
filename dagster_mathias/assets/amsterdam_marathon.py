@@ -96,19 +96,22 @@ def get_bib_status() -> dict:
         raise ValueError("Failed to retrieve data")
 
 
-def check_num_bibs_available(data: dict) -> int:
-    return data["data"]["event"]["registrations_for_sale_count"]
+def check_num_bibs_available(data: dict) -> tuple[int, int]:
+    return (
+        data["data"]["event"]["registrations_for_sale_count"],
+        data["data"]["event"]["filtered_registrations_for_sale_count"],
+    )
 
 
 @asset()
 def bib_reporter() -> None:
     data = get_bib_status()
-    num_bibs_available = check_num_bibs_available(data)
+    num_bibs_available, filtered_bibs_available = check_num_bibs_available(data)
 
     if num_bibs_available == 0:
         print("There are no bibs available")
         return
-    text = f"There are {num_bibs_available} bibs available! :athletic_shoe: <https://www.tcsamsterdammarathon.eu/bib-number-supply-demand|Webpage>"
+    text = f"There are {num_bibs_available} bibs available, {filtered_bibs_available} filtered bibs available! :athletic_shoe: <https://www.tcsamsterdammarathon.eu/bib-number-supply-demand|Webpage>"
     payload = {"text": text}
 
     send_slack_message(payload, env.get_env_var("SLACK_WEBHOOK_URL"))
