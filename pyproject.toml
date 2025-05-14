@@ -9,8 +9,8 @@ readme = "README.md"
 python = "3.11.6"
 dagster = "^1.7.3"
 dagster-webserver = "^1.7.3"
-setuptools = "^69.5.1"
-requests = "^2.31.0"
+setuptools = "^70.0.0"
+requests = "^2.32.2"
 
 
 [tool.poetry.group.dev.dependencies]
